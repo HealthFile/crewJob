@@ -43,12 +43,12 @@
 <?php } else { ?>
         <div id="user_name">
           <span class="glyphicon glyphicon-user" aria-hidden="true"></span> &nbsp;
-          <?php echo $_SESSION['user_name']; ?>
+          <?php echo $_SESSION['email']; ?>
         </div>
         <button type="button" class="btn btn-danger btn-sm pull-right" onclick="json_sbm('account/logout','');">Изход</button>
         <div style="clear: both; height: 12px;"></div>
-        <a href="account" class="pull-left"><span class="label label-default">Редакция профил</span></a>
-        <a href="orders" class="pull-right"><span class="label label-default">Моите поръчки</span></a>
+        <a href="portfolio" class="pull-left"><span class="label label-default">Портфолио</span></a>
+        <a href="change_pass" class="pull-right"><span class="label label-default">Смяна на парола</span></a>
 <?php } ?>
       </div>
     </header>
