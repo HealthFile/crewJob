@@ -7,6 +7,7 @@ class Projects extends CI_Controller
         parent::__construct();
         $this->load->model('Category_model');
         $this->load->model('Projects_model');
+
     }
     public function index()
     {
@@ -36,5 +37,14 @@ class Projects extends CI_Controller
             echo "</pre>";
         }
 
+    }
+
+    public function create_view()
+    {
+        if (!isset($_SESSION['user_id'])) { redirect("home"); }
+
+        $this->load->view('header');
+        $this->load->view('projects/create_project_view');
+        
     }
 }
