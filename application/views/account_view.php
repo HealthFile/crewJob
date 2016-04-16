@@ -27,7 +27,7 @@
             <tr class="form-group">
               <td style="width: 100px;"><span class="required">*</span><span class="control-label">E-mail</span></td>
               <td>
-                <input type="text" id="email" name="email" class="form-control" value="<?php echo htmlspecialchars($user['email']); ?>"/>
+                <input type="text" id="email" name="email" class="form-control"/>
                 <span class="help-block">Невалиден e-mail!</span>
                 <span class="label label-danger warning busy_mail">Вече има регистриран потребител с този e-mail!</span>
               </td>
