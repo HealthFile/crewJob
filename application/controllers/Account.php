@@ -31,8 +31,8 @@ class Account extends CI_Controller {
     header('Content-Type: application/json');
     echo json_encode($response);
   }
-  
-   public function login(){
+
+    public function login(){
     $response=array();
     $this->load->model('users_model');
     $user=$this->users_model->get_user(array('email'=>$_POST['user'],'password'=>md5($_POST['pass'])));

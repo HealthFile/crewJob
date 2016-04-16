@@ -17,6 +17,13 @@ function json_sbm(url,data){
 //      alert(response);
       if (response.message != undefined) { alert(response.message); }
       if (response.redirect != undefined){ window.location.replace(response.redirect); }
+      if (response.reload != undefined){ location.reload(); }
+      if (response.new_link != undefined){
+        $('#list_link').append('<tr data-link_id="'+response.new_link+'"><td><a href="'+$('#link').val()+
+                               '" target="_blank">'+$('#link_note').val()+
+                               '</a></td><td><a class="btn btn-danger delete_link">Изтрии</a></td></tr>');
+        $('#link_note, #link').val('');
+      }
       if (response.busy_mail != undefined) {
         $('#btn_fpas').removeAttr('disabled');
         $('.busy_mail').closest('.form-group').addClass('has-error');

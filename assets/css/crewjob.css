@@ -61,4 +61,11 @@ html, body{
 #tbl-user tr {
   height: 70px;
 }
+#birth_date{
+  text-align: center;
+  background-color: #FFF;
+}
+#user_note{
+  resize: none;
+}
 
