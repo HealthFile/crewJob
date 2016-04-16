@@ -16,7 +16,7 @@
 <body>
   <div class="container">
     <header class="header">
-      <a href="home" class="hidden-xs"><img src='assets/img/memory.png' style="width: 90px; margin-top: -15px;"/></a>
+      <a href="home" class="hidden-xs"><img src='assets/img/logo.png' style="width: 90px;"/></a>
       <div id="login" class="pull-right">
 <?php if (!isset($_SESSION['user_id'])) { ?>
         <div id="go_login" class="btn-group pull-right">
