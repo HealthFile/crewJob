@@ -3,17 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Account extends CI_Controller {
   public function index(){
-    $this->load->view('header');
-    if (isset($_SESSION['user_id'])) {
-      $this->load->model('users_model');
-      $data['user']=$this->users_model->get_user(array('user_id'=>$_SESSION['user_id']));
+    if (isset($_SESSION['user_id'])) { header("Location: portfolio"); }
+    else{ 
+      $this->load->view('header');
+      $this->load->view('account_view');
+      $this->load->view('footer');
     }
-    else{ $data['user']=array('email'=>'',
-                              'first_name'=>'',
-                              'last_name'=>'');
-    }
-    $this->load->view('account_view',$data);
-    $this->load->view('footer');
   }
   
   public function add_user(){
@@ -29,7 +24,7 @@ class Account extends CI_Controller {
     if (trim($_POST['cpass']) != $password) { $response['errors'][]='cpass'; }
     if (!isset($_POST['agree'])) { $response['errors'][]='agree'; }
     if (!isset($response['errors']) && !isset($response['busy_mail'])){
-      $this->users_model->add_user(array('email'=>$email,'password'=>md5($password)));
+      $this->users_model->add_user(array('email'=>$email,'password'=>md5($password),'date_create'=>date('Y-m-d')));
 //      $response['message']='Успешна регистрация!';
       $response['redirect']='portfolio';
     }
@@ -44,9 +39,9 @@ class Account extends CI_Controller {
     if (!$user){ $response['no_user']=1; }
     else{
       $_SESSION['user_id']=$user['user_id'];
-      $_SESSION['user_name']=$user['first_name'].' '.$user['last_name'];
+      $_SESSION['email']=$user['email'];
       $response['login']=<<<LGN
-        <div id="user_name"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> &nbsp; {$_SESSION['user_name']}</div>
+        <div id="user_name"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> &nbsp; {$_SESSION['email']}</div>
         <button type="button" class="btn btn-danger btn-sm pull-right" onclick="json_sbm('account/logout','');">Изход</button>
         <div style="clear: both; height: 12px;"></div>
         <a href="account" class="pull-left"><span class="label label-default">Редакция профил</span></a>
