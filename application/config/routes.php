@@ -53,6 +53,7 @@ $route['default_controller']    = 'home';
 $route['404_override']          = '';
 $route['translate_uri_dashes']  = FALSE;
 $route['account']               = 'Account';
+$route['portfolio']             = 'Portfolio/index';
 $route['projects']              = 'Projects/index';
 $route['projects/(:num)']       = 'Projects/show/$1';
 
