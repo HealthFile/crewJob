@@ -190,13 +190,13 @@ textarea:placeholder-shown { /* Standard (https://drafts.csswg.org/selectors-4/#
 .main-content .main-heading h2 { font-size: 36px; line-height: 39px; font-weight: bold; color: #3c3c3c; padding-bottom: 20px; }
 
 .main-content .project-box-row + .project-box-row { margin-top: 80px; }
-.main-content .project-box { width: 30%; background: #fff; float: left; border-radius: 6px; position: relative; }
+.main-content .project-box { width: 29%; background: #fff; float: left; margin: 2%; border-radius: 6px; position: relative; margin-bottom: 60px; }
 .main-content .project-box {
   -webkit-box-shadow: 4px 4px 13px -3px rgba(0,0,0,0.31);
   -moz-box-shadow: 4px 4px 13px -3px rgba(0,0,0,0.31);
   box-shadow: 4px 4px 13px -3px rgba(0,0,0,0.31);
 }
-.main-content .project-box + .project-box { margin-left: 4%; }
+
 
 .main-content .project-box .image-holder { position: relative; margin-bottom: 12px; display: block; }
 .main-content .project-box .image-holder:after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 12px; background: url('../img/triygalnik.png') center center; }
@@ -221,7 +221,7 @@ textarea:placeholder-shown { /* Standard (https://drafts.csswg.org/selectors-4/#
   background: linear-gradient(to right,  rgba(142,208,61,1) 0%,rgba(81,166,46,1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8ed03d', endColorstr='#51a62e',GradientType=1 );
 }
-.project-box-holder { padding-bottom: 60px; }
+.project-box-holder { padding-bottom: 20px; }
 
 /* Call to action */
 .call-to-action { height: 385px; background: url('../img/small-banner.jpg') no-repeat center center; background-size: cover; text-align: center; padding: 70px 0; box-sizing: border-box; }

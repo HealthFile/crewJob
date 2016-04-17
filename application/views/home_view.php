@@ -29,8 +29,7 @@
 			<img src="assets/img/SEPARATE-fade.png">
 		</div>
 
-		<div class="project-box-holder">
-			<div class="project-box-row clearfix">
+		<div class="project-box-holder clearfix">
 				<div class="project-box">
 					<a href="#" class="image-holder">
 						<img src="assets/img/pic-001.jpg">
@@ -78,9 +77,6 @@
 						<p class="project-category">Category: <a href="#">Finance</a></p>
 					</div>
 				</div>
-			</div>
-
-			<div class="project-box-row clearfix">
 				<div class="project-box">
 					<a href="#" class="image-holder">
 						<img src="assets/img/pic-004.jpg">
@@ -128,7 +124,6 @@
 						<p class="project-category">Category: <a href="#">Finance</a></p>
 					</div>
 				</div>
-			</div>
 		</div>		
 
 		<a href="#" class="load-more-btn">Зареди повече</a>

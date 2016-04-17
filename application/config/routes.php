@@ -49,13 +49,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller']    = 'home';
-$route['home']                  = 'home';
-$route['404_override']          = '';
-$route['translate_uri_dashes']  = FALSE;
-$route['account']               = 'Account';
-$route['portfolio']             = 'Portfolio/index';
-$route['projects']              = 'Projects/index';
-$route['projects/(:num)']       = 'Projects/show/$1';
-$route['projects/create']       = 'Projects/create_view';
+$route['default_controller']                = 'home';
+$route['home']                              = 'home';
+$route['404_override']                      = '';
+$route['translate_uri_dashes']              = FALSE;
+$route['account']                           = 'Account';
+$route['portfolio']                         = 'Portfolio/index';
+$route['projects']                          = 'Projects/index';
+$route['projects/(:num)']                   = 'Projects/show/$1';
+$route['projects/(:num)/edit']['get']       = 'Projects/edit_view/$1';
+$route['projects/(:num)/edit']['post']      = 'Projects/edit/$1';
+$route['projects/create']['get']            = 'Projects/create_view';
+$route['projects/upload']['get']            = 'Projects/upload_view';
+$route['projects/create']['post']           = 'Projects/create';
+$route['projects/upload']['post']           = 'Projects/upload';
+$route['projects/delete-file']      = 'Projects/delete_image';
 
