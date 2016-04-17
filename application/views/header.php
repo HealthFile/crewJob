@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html>
-<head>
+
+  <head>
   <title>CrewJob</title>
   <meta charset="UTF-8">
   <link rel="shortcut icon" href="css/images/favicon.png" />
@@ -9,12 +10,14 @@
   <link rel="stylesheet" href="assets/css/owl.carousel.css" type="text/css" media="all" />
   <link rel="stylesheet" href="assets/css/jquery.fs.selecter.css" type="text/css" media="all" />
   <link rel="stylesheet" href="assets/css/style.css" type="text/css" media="all" />
-
   <script src="assets/js/jquery-1.11.0.min.js" type="text/javascript"></script>
   <script src="assets/js/owl.carousel.js" type="text/javascript"></script>
   <script src="assets/js/jquery.fs.selecter.js" type="text/javascript"></script>
   <script src="assets/js/functions.js" type="text/javascript"></script>
 </head>
+<body>
+  
+
 
 <header class="header">
   <div class="shell clearfix">

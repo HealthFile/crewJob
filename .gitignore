@@ -3,6 +3,7 @@
 application/cache/*
 !application/cache/index.html
 !application/cache/.htaccess
+!.htaccess
 <<<<<<< HEAD
 application/confiq/database.php
 !application/logs/*
