@@ -15,13 +15,19 @@ class Projects extends CI_Controller
     {
         $category = $this->Category_model->getAllCategory();
         $projects = $this->Projects_model->getAllProjects();
+        $projects_limit = $this->Projects_model->get_with_limit(2);
+
         echo "<h1>Projects:</h1>";
-//        foreach ($projects as $project) {
-//            echo $project['name'];
-//        }
         echo "<pre>";
         print_r($projects);
         echo "</pre>";
+
+
+        echo "<hr />";
+        echo "<pre>";
+        print_r($projects_limit);
+        echo "</pre>";
+
 
         echo "<hr/>";
         echo "<h1>Categories:</h1>";
@@ -32,6 +38,7 @@ class Projects extends CI_Controller
 
     public function show($id)
     {
+        echo $this->session->flashdata('success_edit');
         $project = $this->Projects_model->getByID($id);
         if($project){
             echo "<pre>";
@@ -55,7 +62,7 @@ class Projects extends CI_Controller
     {
         $this->form_validation->set_rules('project_name', 'Името на проекта', 'required');
         $this->form_validation->set_rules('project_description', 'Описанието на проекта', 'required');
-//        $this->form_validation->set_rules('categories', 'Категории', 'required');
+        $this->form_validation->set_rules('categories[]', 'Категории', 'required');
 
         if ($this->form_validation->run() == FALSE)
         {
@@ -87,6 +94,7 @@ class Projects extends CI_Controller
     {
 
         if (!isset($_SESSION['user_id'])) { redirect("home"); }
+
         echo $this->session->flashdata('success_project');
         $this->session->set_flashdata('keep_project_id', $this->session->flashdata('project_id'));
 
@@ -119,7 +127,7 @@ class Projects extends CI_Controller
             $data['error'] = '';
             $data_upload = $this->upload->data();
 
-            $this->Projects_model->insert_project_file($data_upload['file_name'], $data_upload['orig_name'], $data_upload['file_ext'], $project_id);
+
 
             $is_image = array('.jpg', '.png', '.JPG', '.JPEG', '.gif');
 
@@ -134,7 +142,10 @@ class Projects extends CI_Controller
 
 
             /*  storing uploaded image into DB Attachments table  */
-                $this->Projects_model->insert_project_file($thumb['new_image'], $thumb['new_image'], pathinfo($thumb['new_image'])['extension'], $project_id);
+//                $this->Projects_model->insert_project_file($thumb['new_image'], $thumb['new_image'], pathinfo
+//                ($thumb['new_image'])['extension'], $project_id, 2);
+            $this->Projects_model->insert_project_file($data_upload['file_name'], $data_upload['orig_name'],
+                $data_upload['file_ext'], $project_id, 1, $thumb['new_image']);
             /*  end crop  */
 
 
@@ -154,6 +165,59 @@ class Projects extends CI_Controller
         }
 
     }
+
+    public function edit_view($id)
+    {
+        if (!isset($_SESSION['user_id'])) { redirect("home"); }
+
+        $project = $this->Projects_model->project_edit($id);
+
+        if($project['num'] == 1){
+            $data['project'] = $project['result'][0];
+            $this->load->view('header');
+            $this->load->view('projects/edit', $data);
+            $this->load->view('footer');
+        }else{
+            redirect('projects/' . $id);
+        }
+    }
+
+    public function edit($id)
+    {
+        $this->form_validation->set_rules('project_name', 'Името на проекта', 'required');
+        $this->form_validation->set_rules('project_description', 'Описанието на проекта', 'required');
+echo 1;
+        if ($this->form_validation->run() == FALSE)
+        {
+            $this->edit_view($id);
+
+        }else{
+            
+            $response = $this->Projects_model->update_project($id);
+            if($response){
+
+            }
+            $this->session->set_flashdata('success_edit', 'Успешно редактирахте проекта');
+
+            redirect('projects/' . $id);
+
+        }
+
+    }
+
+    public function delete_image()
+    {
+
+        $resp = $this->Projects_model->get_project_file_by_id($_POST['id']);
+        header('Content-Type: application/json');
+        $this->Projects_model->delete_project_image($resp['id']);
+
+        unlink('assets/uploads/' . $resp['filename']);
+        unlink('assets/uploads/' . $resp['crop_file']);
+
+        echo json_encode($resp);
+    }
+
     /*  cropping method  */
     public function crop($img_full_path, $img_file_name, $width, $height, $prefix, $delimiter)
     {
