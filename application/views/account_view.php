@@ -22,7 +22,7 @@
     <div class="border">
       <h1>Нов потребител</h1>
       <form action="account/add_user" class="row" style="margin-top: 20px;">
-        <div class="col-md-6">
+        <div class="col-md-6 col-md-offset-3">
           <table id="tbl-user" class="table table-bordered">
             <tr class="form-group">
               <td style="width: 100px;"><span class="required">*</span><span class="control-label">E-mail</span></td>
@@ -55,8 +55,9 @@
               </td>
             </tr>
           </table>
+          <br/>
+          <button type="submit" class="btn btn-primary  btn-block">Готово</button>
         </div>
-        <div class="col-xs-12"><button type="submit" class="btn btn-primary">Готово</button></div>
       </form>
     </div>
 

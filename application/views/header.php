@@ -21,23 +21,26 @@
 
 <header class="header">
   <div class="shell clearfix">
-    <a href="#" class="logo">
+    <a href="home" class="logo">
       <img src="assets/img/logo-main.png">
     </a>
 
     <ul>
       <li class="active">
-        <a href="#">Home</a>
+        <a href="home">Home</a>
       </li>
       <li>
         <a href="#">Projects</a>
       </li>
+<?php if (!isset($_SESSION['user_id'])) { ?>
       <li>
-        <a href="#">Log in</a>
+        <a href="login">Log in</a>
       </li>
+<?php } else { ?>
       <li class="accent-button">
         <a href="#">Create Project</a>
       </li>
+<?php } ?>
     </ul>
   </div>
 </header>
