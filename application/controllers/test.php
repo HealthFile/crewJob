@@ -9,5 +9,6 @@ class Test extends CI_Controller
 		$this->load->view('header');
 		$this->load->view('project-details');
 		$this->load->view('footer');
+		
 	}
 }

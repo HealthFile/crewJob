@@ -257,8 +257,8 @@ h4.category-sub-heading { padding-bottom: 0; }
 .tabs-content { position: relative; }
 
 .tabs-content { padding: 60px 0 100px 0; }
-.tabs-content h2.tab-heading { font-size: 28px; line-height: 31px; font-weight: bold; padding-bottom: 15px; margin-bottom: 30px; color: #333; text-transform: uppercase; position: relative; }
-.tabs-content h2.tab-heading:after { content: ''; position: absolute; bottom: 0px; left: 0; width: 100px; height: 4px; background: #73bd36; }
+h2.tab-heading { font-size: 28px; line-height: 31px; font-weight: bold; padding-bottom: 15px; margin-bottom: 30px; color: #333; text-transform: uppercase; position: relative; }
+h2.tab-heading:after { content: ''; position: absolute; bottom: 0px; left: 0; width: 100px; height: 4px; background: #73bd36; }
 
 /* TAB 1 */
  .form-main-content { padding-bottom: 100px; }
@@ -329,6 +329,10 @@ img.box-element-5 { position: absolute; top: 40px; right: 60px; width: 140px;}
 /* TAB5 */
 
 .tab5 { padding-bottom: 200px; }
+
+/* Cereate project */
+
+.create-project-file { margin-bottom:  30px; }
 
 /* Footer */
 .footer { background: #73bd36; padding: 14px 0; }
@@ -401,23 +405,42 @@ label:hover input[type="radio"] + span {
 /*****************************************
   CHECKBOX
 ******************************************/
+.checkbox-holder {
+
+}
+
+.checkbox-holder .checkbox-col {
+  width: 140px;
+  display: inline-block;
+  margin: 0 0 30px 0; 
+}
+
+.checkbox-holder .checkbox-col label {
+  margin: 0;
+  display: block;
+}
+
+.checkbox-holder .checkbox-col label + label {
+  margin-top: 6px;
+}
+
 input[type="checkbox"] {
   display: none;
+
 }
 input[type="checkbox"] + span {
-  background-color: #fefefe;
-  border: 1px solid;
-  border-color: #ccc #fff #fff #ccc;
+  background-color: #73bd36;
+  border: none;
   border-radius: 3px;
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15);
   display: inline-block;
-  float: left;
+  float: none;
   margin-right: 7px;
   padding: 7px;
   position: relative;
 }
 input[type="checkbox"]:checked + span {
-  background-color: #f00;
+  background-color: #fff;
   border-color: #900 #f00 #f00 #900;
   color: #fff;
 }
