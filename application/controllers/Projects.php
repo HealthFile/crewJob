@@ -218,6 +218,26 @@ echo 1;
         echo json_encode($resp);
     }
 
+    public function delete_view($id)
+    {
+        $project = $this->Projects_model->getByID($id);
+
+        echo "<h2>Сигурни ли сте, че искате да си изтриете проекта</h2>";
+
+        echo "<pre>";
+        print_r($project);
+        echo "</pre>";
+        ?>
+        <form action="delete" method="post">
+            <input type="submit" name="delete_project" value="Изтрии">
+        </form>
+    <?php
+    }
+    public function delete($id)
+    {
+        echo $id;
+    }
+
     /*  cropping method  */
     public function crop($img_full_path, $img_file_name, $width, $height, $prefix, $delimiter)
     {
