@@ -1,34 +1,14 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
-
-<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
-
-<div class="owl-carousel main-slider">
-	<div class="item" style="background-image: url(assets/img/BANNER-001.jpg);">
-		<div class="shell">
-			dasdasdas
-		</div>
-	</div>
-
-	<div class="item" style="background-image: url(assets/img/BANNER-001.jpg);">
-		<div class="shell">
-			fasdasdasdad
-		</div>
-	</div>
-
-	<div class="item" style="background-image: url(assets/img/BANNER-001.jpg);">
-		<div class="shell">
-			dsadada
-		</div>
-	</div>
-</div>
-
-<div class="main-content">
+<div class="main-content project-desc-main-content">
 	<div class="shell">
-		<div class="main-heading">
-			<h2>ПОСЛЕДНИ ПРОЕКТИ</h2>
-			<img src="assets/img/SEPARATE-fade.png">
-		</div>
-
+		<h4 class="sub-heading category-sub-heading">Filter by category: </h4>
+		<form class="category-filter-dropdown">
+			<select class="main-select">
+				<option value="Oldest">Oldest</option>
+				<option value="Newest">Newest</option>
+				<option value="Business">Business</option>
+				<option value="Sport">Sport</option>
+			</select>
+		</form>
 		<div class="project-box-holder clearfix">
 				<div class="project-box">
 					<a href="#" class="image-holder">
@@ -124,18 +104,8 @@
 						<p class="project-category">Category: <a href="#">Finance</a></p>
 					</div>
 				</div>
-		</div>		
+		</div>	
 
 		<a href="#" class="load-more-btn">Зареди повече</a>
-	</div>
-</div>
-
-<div class="call-to-action">
-	<div class="shell">
-		<div class="cta-holder">
-			<h2>Вземи <span>участие</span> сега</h2>
-			<p>This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat.</p>
-			<a href="#" class="btn-main">Присъедини се</a>
-		</div>
-	</div>
+	</div>	
 </div>
