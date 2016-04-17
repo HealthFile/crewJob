@@ -3,13 +3,10 @@
 application/cache/*
 !application/cache/index.html
 !application/cache/.htaccess
-<<<<<<< HEAD
+
 application/confiq/database.php
 !application/logs/*
-=======
-application/config/database.php
-application/logs/*
->>>>>>> 2e42eefada70a1600a550795dc4ccdbc611b768e
+
 !application/logs/index.html
 !application/logs/.htaccess
 
