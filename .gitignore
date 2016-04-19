@@ -32,6 +32,6 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 /user_guide
 /assets/uploads
 /ipetrov.jerry.icnhost.net
-#/application/config/database.php
+/application/config/database.php 
 
 application/logs/*
