@@ -1,23 +1,21 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
-<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
-
 <div class="owl-carousel main-slider">
 	<div class="item" style="background-image: url(assets/img/BANNER-001.jpg);">
 		<div class="shell">
-			dasdasdas
+<!--			dasdasdas-->
 		</div>
 	</div>
 
-	<div class="item" style="background-image: url(assets/img/BANNER-001.jpg);">
+	<div class="item" style="background-image: url(assets/img/BANNER-002.jpg);">
 		<div class="shell">
-			fasdasdasdad
+<!--			fasdasdasdad-->
 		</div>
 	</div>
 
-	<div class="item" style="background-image: url(assets/img/BANNER-001.jpg);">
+	<div class="item" style="background-image: url(assets/img/BANNER-003.jpg);">
 		<div class="shell">
-			dsadada
+<!--			dsadada-->
 		</div>
 	</div>
 </div>
@@ -30,103 +28,53 @@
 		</div>
 
 		<div class="project-box-holder clearfix">
+
+			<?php
+
+			foreach ($last_projects as $last_project) {
+				?>
 				<div class="project-box">
-					<a href="#" class="image-holder">
-						<img src="assets/img/pic-001.jpg">
+					<a href="<?php echo base_url() ?>projects/<?php echo $last_project['pr_ID'] ?>" class="image-holder">
+						<img src="<?php echo base_url() ?>assets/uploads/<?php echo $last_project['filename']; ?>">
 					</a>
 
 					<div class="box-description">
-						<a href="#" class="project-title">Project heading</a>
-						<p>This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin</p>
-						<a href="#" class="user-uploaded-image">
-							<img src="assets/img/person1.jpg">
-						</a>
+						<a href="<?php echo base_url() ?>projects/<?php echo $last_project['pr_ID'] ?>"
+						   class="project-title"><?php echo $last_project['pr_name']; ?></a>
+						<p><?php echo $last_project['pr_description']; ?></p>
+						<?php
+						if($last_project['avatar']){
+							?>
+							<a href="<?php echo base_url() ?>user/<?php echo $last_project['u_id']; ?>"
+							   class="user-uploaded-image">
+								<img src="assets/uploads/<?php echo $last_project['avatar']; ?>">
+							</a>
+							<?php
+						}else{
+							?>
+							<a href="<?php echo base_url() ?>user/<?php echo $last_project['u_id']; ?>" class="user-uploaded-image">
+								<img src="assets/img/person1.jpg">
+							</a>
+							<?php
+						}
+						?>
 
-						<p class="project-category">Category: <a href="#">Finance</a></p>
+
+						<p class="project-category">Category: 
+							<?php
+							echo $last_project['cat_name'];
+							?>
+						</p>
 					</div>
 				</div>
+				<?php
+				}
 
-				<div class="project-box">
-					<a href="#" class="image-holder">
-						<img src="assets/img/pic-002.jpg">
-					</a>
-
-					<div class="box-description">
-						<a href="#" class="project-title">Project heading</a>
-						<p>This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin</p>
-						<a href="#" class="user-uploaded-image">
-							<img src="assets/img/person1.jpg">
-						</a>
-
-						<p class="project-category">Category: <a href="#">Finance, Sport</a></p>
-					</div>
-				</div>
-
-				<div class="project-box">
-					<a href="#" class="image-holder">
-						<img src="assets/img/pic-003.jpg">
-					</a>
-
-					<div class="box-description">
-						<a href="#" class="project-title">Project heading</a>
-						<p>This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin</p>
-						<a href="#" class="user-uploaded-image">
-							<img src="assets/img/person1.jpg">
-						</a>
-
-						<p class="project-category">Category: <a href="#">Finance</a></p>
-					</div>
-				</div>
-				<div class="project-box">
-					<a href="#" class="image-holder">
-						<img src="assets/img/pic-004.jpg">
-					</a>
-
-					<div class="box-description">
-						<a href="#" class="project-title">Project heading</a>
-						<p>This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin</p>
-						<a href="#" class="user-uploaded-image">
-							<img src="assets/img/person1.jpg">
-						</a>
-
-						<p class="project-category">Category: <a href="#">Finance</a></p>
-					</div>
-				</div>
-
-				<div class="project-box">
-					<a href="#" class="image-holder">
-						<img src="assets/img/pic-005.jpg">
-					</a>
-
-					<div class="box-description">
-						<a href="#" class="project-title">Project heading</a>
-						<p>This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin</p>
-						<a href="#" class="user-uploaded-image">
-							<img src="assets/img/person1.jpg">
-						</a>
-
-						<p class="project-category">Category: <a href="#">Finance, Sport</a></p>
-					</div>
-				</div>
-
-				<div class="project-box">
-					<a href="#" class="image-holder">
-						<img src="assets/img/pic-006.jpg">
-					</a>
-
-					<div class="box-description">
-						<a href="#" class="project-title">Project heading</a>
-						<p>This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin</p>
-						<a href="#" class="user-uploaded-image">
-							<img src="assets/img/person1.jpg">
-						</a>
-
-						<p class="project-category">Category: <a href="#">Finance</a></p>
-					</div>
-				</div>
+			?>
+			
 		</div>		
 
-		<a href="#" class="load-more-btn">Зареди повече</a>
+<!--		<a href="#" class="load-more-btn">Зареди повече</a>-->
 	</div>
 </div>
 

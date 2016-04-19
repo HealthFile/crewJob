@@ -9,7 +9,9 @@
   <div class="shell">
     <div class="form-holder">
       <form action="account/login">
-        <div id="no_user" class="alert alert-danger"><small>Грешен потребител и/или парола!</small></div>
+        <div style="margin-top: -40px; height: 40px">
+          <div id="no_user" class="alert alert-danger" style="display: none; color: red;">Грешен потребител и/или парола!</div>
+        </div>
         <div class="input-group">
 	  <input type="email" placeholder="Вашият e-mail" class="input-main input-spacing" id="user" name="user">
         </div><br/>

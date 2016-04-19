@@ -9,10 +9,11 @@ class Portfolio extends CI_Controller {
       $this->load->model('portfolio_model');
       $data['user']=$this->users_model->get_user(array('user_id'=>$_SESSION['user_id']));
       $data['links']=$this->portfolio_model->get_links(array('user_id'=>$_SESSION['user_id']));
-      $data['files']=$this->portfolio_model->get_files(array('user_id'=>$_SESSION['user_id']));
+      $data['files']=$this->portfolio_model->get_files(array('user_id'=>$_SESSION['user_id'],'file_key'=>0));
       $this->load->model('users_model');
       $this->load->view('header');
-      $this->load->view('portfolio_view',$data);
+      $this->load->view('user-settings',$data);
+//      $this->load->view('portfolio_view',$data);
       $this->load->view('footer');
     }
   }
@@ -90,6 +91,17 @@ class Portfolio extends CI_Controller {
     if (!isset($response['errors'])){
       $this->db->update('users',array('password'=>md5($password)),array('user_id'=>$_SESSION['user_id']));
       $response['message']='Паролата е сменена!';
+    }
+    header('Content-Type: application/json');
+    echo json_encode($response);
+  }
+  
+  public function user_category(){
+    $response=array();
+    $this->db->delete('users_categories', array('user_id'=>$_SESSION['user_id']));
+    if (isset($_POST['category'])){
+      foreach ($_POST['category'] as $val){ $db_options[]=array('category_id'=>$val,'user_id'=>$_SESSION['user_id']); }
+      $this->db->insert_batch('users_categories',$db_options);
     }
     header('Content-Type: application/json');
     echo json_encode($response);

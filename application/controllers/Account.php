@@ -6,7 +6,8 @@ class Account extends CI_Controller {
     if (isset($_SESSION['user_id'])) { header("Location: portfolio"); }
     else{ 
       $this->load->view('header');
-      $this->load->view('account_view');
+//      $this->load->view('account_view');
+      $this->load->view('sign-up');
       $this->load->view('footer');
     }
   }
@@ -22,7 +23,7 @@ class Account extends CI_Controller {
     }
     if (strlen($password)<4) { $response['errors'][]='password'; }
     if (trim($_POST['cpass']) != $password) { $response['errors'][]='cpass'; }
-    if (!isset($_POST['agree'])) { $response['errors'][]='agree'; }
+//    if (!isset($_POST['agree'])) { $response['errors'][]='agree'; }
     if (!isset($response['errors']) && !isset($response['busy_mail'])){
       $this->users_model->add_user(array('email'=>$email,'password'=>md5($password),'date_create'=>date('Y-m-d')));
 //      $response['message']='Успешна регистрация!';
