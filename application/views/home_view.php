@@ -9,7 +9,7 @@
 
 	<div class="item" style="background-image: url(assets/img/BANNER-002.jpg);">
 		<div class="shell">
-			fasdasdasdad-->
+<!--			fasdasdasdad-->
 		</div>
 	</div>
 
