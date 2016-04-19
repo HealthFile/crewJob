@@ -1,4 +1,4 @@
 # crewJob
-Making starting new project easy
-<a href="ipetrov.jerry.icnhost.net">ipetrov.jerry.icnhost.net</a>
+Making starting new project easy<br />
+<a href="http://ipetrov.jerry.icnhost.net/home">ipetrov.jerry.icnhost.net</a>
 
