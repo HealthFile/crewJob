@@ -58,7 +58,7 @@ $route['portfolio']                         = 'Portfolio/index';
 $route['projects']                          = 'Projects/index';
 $route['projects/(:num)']                   = 'Projects/show/$1';
 $route['projects/(:num)/edit']['get']       = 'Projects/edit_view/$1';
-$route['projects/(:num)/edit']['get']       = 'Projects/edit_view/$1';
+$route['projects/(:num)/edit']['post']       = 'Projects/edit/$1';
 
 $route['projects/(:num)/delete']['get']     = 'Projects/delete_view/$1';
 $route['projects/(:num)/delete']['post']    = 'Projects/delete/$1';
@@ -70,4 +70,5 @@ $route['projects/upload']['post']           = 'Projects/upload';
 $route['projects/delete-file']              = 'Projects/delete_image';
 $route['user/(:num)']['get']                = 'Users/user/$1';
 $route['user']['get']                       = 'Users';
+$route['projects/apply']['post']            = 'Projects/apply';
 

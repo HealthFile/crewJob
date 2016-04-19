@@ -1,0 +1,2 @@
+[17-Apr-2016 14:11:58 CST6CDT] PHP Parse error:  syntax error, unexpected '(' in /home/ipetrov/public_html/application/views/header.php on line 37
+[18-Apr-2016 15:11:48 CST6CDT] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO), expecting ':' in /home/ipetrov/public_html/application/views/projects/project-view.php on line 28

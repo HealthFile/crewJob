@@ -19,9 +19,9 @@ function json_sbm(url,data){
       if (response.redirect != undefined){ window.location.replace(response.redirect); }
       if (response.reload != undefined){ location.reload(); }
       if (response.new_link != undefined){
-        $('#list_link').append('<tr data-link_id="'+response.new_link+'"><td><a href="'+$('#link').val()+
-                               '" target="_blank">'+$('#link_note').val()+
-                               '</a></td><td><a class="btn btn-danger delete_link">Изтрии</a></td></tr>');
+        $('#list_link').append('<tr data-link_id="'+response.new_link+'"><td style="padding: 3px 30px 3px 0"><a href="'+
+                               $('#link').val()+'" target="_blank" class="input-link" style="color: #00F">'+$('#link_note').val()+
+                               '</a></td><td><a class="btn-main form-btn-main delete-btn delete_link">Изтрии</a></td></tr>');
         $('#link_note, #link').val('');
       }
       if (response.busy_mail != undefined) {

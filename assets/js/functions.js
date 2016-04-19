@@ -37,8 +37,17 @@
 			      e.preventDefault()
 			    }
 			     e.preventDefault();
+                            
+                             
+                             $('#cid'+$(this).data('id')).trigger('click');
+                             
+                             
+                             
+                             
+                             
 			  });
 			}); 
+                        
 
 			// Selector init
 			$(".main-select").selecter();

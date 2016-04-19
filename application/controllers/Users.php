@@ -21,6 +21,8 @@ class Users extends CI_Controller
 
     public function user($id)
     {
-        echo $id;
+      $this->load->view('header');;
+      $this->load->view('user-details');
+      $this->load->view('footer');
     }
 }

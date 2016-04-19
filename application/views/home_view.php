@@ -1,23 +1,21 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
-<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
-
 <div class="owl-carousel main-slider">
 	<div class="item" style="background-image: url(assets/img/BANNER-001.jpg);">
 		<div class="shell">
-			dasdasdas
+<!--			dasdasdas-->
 		</div>
 	</div>
 
-	<div class="item" style="background-image: url(assets/img/BANNER-001.jpg);">
+	<div class="item" style="background-image: url(assets/img/BANNER-002.jpg);">
 		<div class="shell">
-			fasdasdasdad
+<!--			fasdasdasdad-->
 		</div>
 	</div>
 
-	<div class="item" style="background-image: url(assets/img/BANNER-001.jpg);">
+	<div class="item" style="background-image: url(assets/img/BANNER-003.jpg);">
 		<div class="shell">
-			dsadada
+<!--			dsadada-->
 		</div>
 	</div>
 </div>

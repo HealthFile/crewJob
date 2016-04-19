@@ -15,36 +15,34 @@ class Projects extends CI_Controller
     {
         $category = $this->Category_model->getAllCategory();
         $projects = $this->Projects_model->getAllProjects();
-        $projects_limit = $this->Projects_model->get_with_limit(2);
-
-        echo "<h1>Projects:</h1>";
-        echo "<pre>";
-        print_r($projects);
-        echo "</pre>";
-
-
-        echo "<hr />";
-        echo "<pre>";
-        print_r($projects_limit);
-        echo "</pre>";
-
-
-        echo "<hr/>";
-        echo "<h1>Categories:</h1>";
-        foreach ($category as $item) {
-            echo $item['name']. '<br />';
+        $data['projects'] = $projects;
+        for ($i = 0; $i < count($data['projects']); $i++){
+            $data['projects'][$i]['pr_description'] = $this->Projects_model->short_text('80',
+                $data['projects'][$i]['pr_description']);
         }
+        $data['category'] = $category;
+        $this->load->view('header');
+        $this->load->view('project-details', $data);
+        $this->load->view('footer');
     }
 
     public function show($id)
     {
-        echo $this->session->flashdata('success_edit');
-        $project = $this->Projects_model->getByID($id);
-        if($project){
-            echo "<pre>";
-            print_r($project);
-            echo "</pre>";
+        if(!empty($_SESSION['user_id'])){
+            $data['is_author'] = $this->Projects_model->project_edit($id);
+        }else{
+            $data['is_author']['num'] = false;
         }
+
+
+        $project = $this->Projects_model->getByID($id);
+        $data['project'] = $project;
+        $this->load->view('header');
+        $this->load->view('projects/project-view', $data);
+        $this->load->view('footer');
+       /* echo "<pre>";
+        print_r($project);
+        echo "</pre>";*/
 
     }
 
@@ -54,7 +52,7 @@ class Projects extends CI_Controller
         if (!isset($_SESSION['user_id'])) { redirect("home"); }
 
         $this->load->view('header');
-        $this->load->view('projects/create_project_view', $data);
+        $this->load->view('projects/create-project', $data);
         
     }
 
@@ -95,7 +93,7 @@ class Projects extends CI_Controller
 
         if (!isset($_SESSION['user_id'])) { redirect("home"); }
 
-        echo $this->session->flashdata('success_project');
+
         $this->session->set_flashdata('keep_project_id', $this->session->flashdata('project_id'));
 
         $data['error'] = '';
@@ -120,8 +118,9 @@ class Projects extends CI_Controller
             
             $data['error'] = $this->upload->display_errors();
             
+           $this->load->view('header');
            $this->load->view('projects/upload', $data);
-            
+
         } else {
 
             $data['error'] = '';
@@ -147,20 +146,7 @@ class Projects extends CI_Controller
             $this->Projects_model->insert_project_file($data_upload['file_name'], $data_upload['orig_name'],
                 $data_upload['file_ext'], $project_id, 1, $thumb['new_image']);
             /*  end crop  */
-
-
-//            }else{
-//                $this->Projects_model->insert_project_file($data_upload['file_name'], $data_upload['orig_name'],
-//                    $data_upload['file_ext'], $project_id);
-//            }
-
-
-//            /*  8TH. STEP. Seting Flash data with seccess msg  */
-//            if ($response) {
-//                $this->session->set_flashdata('success_upload', 'Successfully uploaded image');
-//                redirect('dashboard/upload/profile-image');
-//            }
-
+            redirect('projects');
 
         }
 
@@ -168,12 +154,13 @@ class Projects extends CI_Controller
 
     public function edit_view($id)
     {
-        if (!isset($_SESSION['user_id'])) { redirect("home"); }
+        if (!($_SESSION['user_id'])) { redirect("home"); }
 
         $project = $this->Projects_model->project_edit($id);
 
         if($project['num'] == 1){
             $data['project'] = $project['result'][0];
+            $data['categories'] = $this->Category_model->getAllCategory();
             $this->load->view('header');
             $this->load->view('projects/edit', $data);
             $this->load->view('footer');
@@ -186,13 +173,12 @@ class Projects extends CI_Controller
     {
         $this->form_validation->set_rules('project_name', 'Името на проекта', 'required');
         $this->form_validation->set_rules('project_description', 'Описанието на проекта', 'required');
-echo 1;
         if ($this->form_validation->run() == FALSE)
         {
             $this->edit_view($id);
 
         }else{
-            
+
             $response = $this->Projects_model->update_project($id);
             if($response){
 
@@ -294,4 +280,24 @@ echo 1;
         $this->image_lib->clear();
         return $thumb;
     }
+
+    
+
+    public function apply()
+    {
+        $is_applyed = $this->Projects_model->is_applyed($_SESSION['user_id'], $_POST['project']);
+        if($is_applyed == 0){
+            $ret = $this->Projects_model->apply($_POST['project']);
+            if($ret){
+                header('Content-Types: application/json');
+                echo json_encode($ret);
+            }
+        }else{
+            header('Content-Types: application/json');
+            echo json_encode(false);
+        }
+
+
+    }
+    
 }
